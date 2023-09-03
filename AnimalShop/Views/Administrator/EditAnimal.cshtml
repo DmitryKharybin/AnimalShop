@@ -1,0 +1,87 @@
+﻿@using ClientService.ModelDto;
+@model AnimalDto
+
+
+<div class="my_container  container ">
+    <input type="hidden" id="page_identifier" value="edit_animal" />
+
+    <div class="row">
+        <div class="col-auto">
+            <form asp-action="UpdateAnimal" asp-route-AnimalId="@Model.AnimalId" asp-route-PictureName="@Model.PictureName" enctype="multipart/form-data" method="post">
+                <div class="form-group">
+
+                    <div class="form-floating mt-3">
+                        <input asp-for="@Model.Name" class="form-control" placeholder="name" />
+                        <label class="text-secondary" asp-for="@Model.Name">Name</label>
+                        <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="mb-3 mt-3">
+
+                    <input name="formFile" class="file_upload form-control" asp-for="@Model.PictureName" type="file" accept=".jpg, .png, .jpeg" data-val="false">
+
+                </div>
+
+                <div class="form-group mt-3">
+                    <div class="form-floating">
+                        <textarea class="form-control h-100" asp-for="@Model.Description" placeholder="description"></textarea>
+                        <label class="text-secondary" asp-for="@Model.Description">Description</label>
+                        <span asp-validation-for="@Model.Description" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group mt-3">
+
+                    <div class="form-floating">
+                        <select asp-for="@Model.CategoryId" class="form-select pb-0" >
+                           
+                            @foreach (var item in ViewBag.Categories)
+                            {
+                                if (item.Name == Model.Category!.Name)
+                                {
+                                    <option selected value="@item.CategoryId">@item.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.CategoryId">@item.Name</option>
+                                }
+                            }
+                        </select>
+                        <label class="text-secondary" asp-for="@Model.Category"></label>
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group mt-3">
+                    <div class="form-floating">
+                        <input class="form-control" asp-for="@Model.Age" placeholder="age">
+                        <label class="text-secondary" asp-for="@Model.Age">Age</label>
+                        <span asp-validation-for="@Model.Age" class="text-danger"></span>
+                    </div>
+
+                </div>
+
+                <div class="form-group mt-3">
+                    <input type="submit" class="btn btn-outline-primary" value="Insert" />
+                </div>
+            </form>
+        </div>
+
+        <div class="preview col-auto mt-3">
+            <img class="rounded" src="~/Pictures/@Model.PictureName" />
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+

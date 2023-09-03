@@ -1,0 +1,103 @@
+﻿@using ClientService.ModelDto;
+@model AnimalDto
+@{
+    ViewBag.Title = "ShowAnimalDetails";
+
+    CommentDto comment = null;
+}
+
+
+<div class="my_container container mt-5 ">
+    <input type="hidden" id="page_identifier" value="animal_details" />
+
+    <div class="row">
+
+        <div class="col col-2">
+            <div>
+                <img class="rounded-circle" src="~/Pictures/@Model.PictureName"
+                     alt="Animal picture">
+            </div>
+        </div>
+
+
+
+
+        <div class="col col-7  px-5">
+
+            <table class="table">
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <td>
+                        @Model.Name
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Age
+                    </th>
+                    <td>
+                        @Model.Age
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Description
+                    </th>
+                    <td>
+                        <p class="scrollable_td">
+                            @Model.Description
+                        </p>
+
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Category Name
+                    </th>
+                    <td>
+                        @Model.Category!.Name
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>
+                        Add Comment
+                    </th>
+
+                    <td>
+                        <input type="hidden" id="animal_id" value="@Model.AnimalId" />
+                        <textarea class="comment_area"  asp-for="@comment!.Note" placeholder="Comment"></textarea>
+                        <div class="error_text text-danger"></div>
+                        <div><button class="submit_comment btn btn-secondary btn-lg">Submit Comment</button></div>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+
+        <div class="col col-3 px-5  ">
+
+
+            <p><h2>Comments</h2></p>
+
+
+            <div class="scrollable ">
+
+                <ol class="comment_list">
+                    @foreach (var item in Model.Comment!)
+                    {
+                        <li>@item.Note</li>
+                    }
+                </ol>
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+

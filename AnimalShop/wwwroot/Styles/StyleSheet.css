@@ -1,0 +1,168 @@
+﻿
+
+body {
+    --load-time: 250ms;
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+    font-family: 'Ink Free' !important;
+    font-size: 25px !important;
+}
+
+
+
+
+    body.dark {
+        color: lightblue !important ;
+        background-color: #212529 !important;
+    }
+
+        body.dark h2 {
+            color: #1f98ff99;
+        }
+
+        body.dark h4 {
+            color: #1f98ff99;
+        }
+
+
+.navbar_items.bg-dark a {
+    color: lightblue !important;
+}
+
+
+.navbar_items.bg-dark button {
+    color: lightblue !important;
+}
+
+
+img {
+    transition: all 0.3s;
+    height: 200px;
+    width: 200px;
+}
+
+
+    img:hover {
+        transform: scale(1.1)
+    }
+
+.layout_image {
+    height: 200px;
+    width: 200px;
+    animation: layout_image_load var( --load-time) ease-in;
+}
+
+/*Error handeling view's Image*/
+.error_image {
+    height: 500px;
+    width: 500px;
+}
+
+.card-body {
+    height: 300px;
+    overflow-y: auto;
+}
+
+
+.scrollable_td {
+    height: 250px;
+    overflow: auto;
+}
+
+th {
+    font-size: 30px;
+    font-family: 'Ink Free';
+}
+
+td {
+    font-family: 'Ink Free';
+    font-size: 25px;
+    
+}
+
+table.dark {
+    color: lightblue !important;
+    border: 5px solid lightblue !important;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+/*relavant To All Form Themes*/
+form * {
+    font-size: 22px !important;
+    font-weight: bold;
+}
+
+
+form.dark select {
+    color: cadetblue !important;
+}
+
+form.dark textarea {
+    color: cadetblue !important;
+}
+
+form.dark input {
+    color: cadetblue !important;
+}
+
+
+
+
+.scrollable {
+    width: 400px;
+    height: 350px;
+    line-height: 3em;
+    overflow: auto;
+    padding: 5px;
+    border: 5px solid #F3A55D;
+}
+
+    .scrollable.dark {
+        border: 5px solid lightblue;
+    }
+
+
+
+
+
+.my_container {
+    animation: container_load 300ms ease-in var(--load-time);
+    animation-fill-mode: forwards;
+    transform: translateY(-20px);
+    opacity: 0;
+}
+
+
+
+@keyframes layout_image_load {
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes container_load {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

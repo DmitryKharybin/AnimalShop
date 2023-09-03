@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/Styles/StyleSheet.css" rel="stylesheet" />
+    <link href="~/Styles/bootstrap.css" rel="stylesheet" />
+    <link href="~/Styles/bootstrap-icons-1.10.3/bootstrap-icons.css" rel="stylesheet" />
+
+
+
+
+    <script src="~/scripts/popper.js"></script>
+    <script src="~/scripts/bootstrap.js"></script>
+
+    <script src="~/scripts/myScript.js"></script>
+    <script src="~/scripts/jquery.js"></script>
+    <script src="~/scripts/jquery.validate.js"></script>
+    <script src="~/scripts/jquery.validate.unobtrusive.js"></script>
+
+</head>
+<body>
+
+
+
+
+    <nav class=" navbar  nav justify-content-center">
+        <div class="container-fluid">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <i class="navbar-toggler-icon"></i>
+            </button>
+            @if (User.Identity!.IsAuthenticated)
+            {
+                <span>Hello There @User.Identity.Name <a class="btn btn-outline-danger btn-lg" asp-controller="Account" asp-action="Logout">Logout</a>  </span>
+            }
+            else
+            {
+                <span>Hello There Stranger  <a class="btn btn-outline-info btn-lg" asp-controller="Account" asp-action="Login">Login</a> </span>
+            }
+            
+            
+        </div>
+    </nav>
+    <div class="collapse" id="navbarToggleExternalContent">
+        <div class=" navbar_items shadow-3 p-4">
+            <a class="btn btn-outline-secondary btn-block bi bi-house m-0" asp-controller="Shop" asp-action="MainMenu">Home</a>
+            <a class="btn btn-outline-secondary btn-block bi bi-card-list m-0" asp-controller="Shop" asp-action="Catalog">Catalog</a>
+            <a class="btn btn-outline-secondary btn-block bi bi-person-vcard-fill m-0" asp-controller="Administrator" asp-action="Administrator">Administrator</a>
+            <button class=" btn btn-outline-secondary bi-sun color_swapper "></button>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <div class="row text-center">
+            <div class="col ">
+                <span>  <img class="layout_image" src="~/Resources/AkitaLogo.png" /></span>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col">
+
+                @RenderBody()
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <div class="mt-5 text-secondary fs-6">
+
+        &reg 2023 - Rey's Pet Shop
+
+    </div>
+
+
+
+</body>
+</html>

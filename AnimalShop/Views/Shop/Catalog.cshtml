@@ -1,0 +1,72 @@
+﻿@using ClientService.ModelDto;
+@model IEnumerable<AnimalDto>
+@{
+    ViewBag.Title = "Catalog";
+
+}
+
+
+
+<div class="my_container container ">
+    <input type="hidden" id="page_identifier" value="catalog" />
+
+
+    <div class="row">
+        <div class="col-auto">
+            <form class="my_form" asp-action="Catalog" method="post">
+                <select name="categoryId" class="form-select form-select-lg mb-3">
+                    <option value="">Choose catogory</option>
+                    <option value="0">All</option>
+                    @foreach (var item in ViewBag.Categories)
+                    {
+                        <option value="@item.CategoryId">@item.Name</option>
+                    }
+
+                </select>
+            </form>
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="row">
+        <div class="col">
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+
+                @foreach (var animal in Model)
+                {
+                    <div class="col-auto">
+                        <div class="card shadow p-3 mb-5  rounded border border-info h-100 ">
+                            <div class="card-img-top">
+                                <img class="rounded float-left " src="~/Pictures/@animal.PictureName"
+                                     alt="Animal picture">
+                            </div>
+                            <div class="card-body">
+                                <h2 class="card-title">@animal.Name</h2>
+                                <div class="card-text">
+                                    @animal.Description
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <a class="btn btn-outline-secondary  bi bi-book" asp-action="ShowAnimalDetails" asp-route-AnimalId="@animal.AnimalId">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+
+
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>
+
+
+

@@ -1,0 +1,53 @@
+﻿@using ClientService.ModelDto;
+@model IEnumerable<AnimalDto>
+
+@{
+    ViewBag.Title = "Index";
+
+}
+
+
+
+
+<div class="my_container  container " >
+    <input type="hidden" id="page_identifier" value="main_menu" />
+
+    <div class="row">
+        <div class="col">
+            <h2 id="main_menu_header"  class="  text-secondary shadow p-3 mb-5  rounded">The two top animals are:</h2>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="container-sm">
+                    <div class="card-group">
+                        @foreach (var animal in Model)
+                        {
+                            <div class=" card shadow p-3 mb-5  rounded border border-info m-lg-2">
+                                <div class="card-img-top">
+                                    <img class="rounded float-left " src="~/Pictures/@animal.PictureName"
+                                         alt="Animal picture" width="150" height="150">
+                                </div>
+                                <div class="card-body">
+                                    <h2 class="card-title">@animal.Name</h2>
+                                    <div class="card-text">
+                                        @animal.Description
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    Number of Comments ==> @animal.Comment!.Count()
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+

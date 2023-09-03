@@ -1,0 +1,85 @@
+﻿@using ClientService.ModelDto;
+@model IEnumerable<AnimalDto>
+@{
+    ViewBag.Title = "Catalog";
+
+}
+
+
+<div class="my_container  container  " >
+    <input type="hidden" id="page_identifier" value="administrator" />
+    <div class="row">
+        <div class="col-auto">
+           
+            <form class="my_form" asp-action="Administrator" method="post">
+                <select name="categoryId" class="form-select form-select-lg mb-3">
+                    <option value="">Choose catogory</option>
+                    <option value="0">All</option>
+                    @foreach (var item in ViewBag.Categories)
+                    {
+                        <option value="@item.CategoryId">@item.Name</option>
+                    }
+
+                </select>
+            </form>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <a asp-action="CreateAnimal">Add New</a>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PictureName)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.Name)
+                        </th>
+
+                        <th>
+                            Find out more & comments
+                        </th>
+
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var animal in Model)
+                    {
+                        <tr>
+                            <td>
+                                <img class="rounded" src="~/Pictures/@animal.PictureName" alt="Animal picture" width="80" height="80">
+                            </td>
+
+                            <td >
+                                @animal.Name
+                            </td>
+
+                            <td>
+
+                                <span><a asp-action="Delete" asp-route-AnimalId="@animal.AnimalId">Delete</a></span>
+                                <span><a asp-action="EditAnimal" asp-route-AnimalId="@animal.AnimalId">Edit</a></span>
+
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+
+
+            </table>
+        </div>
+
+    </div>
+</div>
